@@ -22,3 +22,8 @@ Edit the directories listed at the bottom of `create_masks.py` or `proj_json_to_
 ```
 python create_masks.py
 ```
+
+# License
+Licensed under GPL 3.0. 
+
+Some code within `create_masks.py` is copied in whole or in part from [labelme](https://github.com/wkentaro/labelme), as noted in the function comments. 
