@@ -58,6 +58,7 @@ def create_shapefile(jsondir, tilepositions, shp_outdir="shapefile"):
 
     # A list of shapely polygons in all images
     all_polygons = []
+    all_names = []
 
     for fn in fns:
 
@@ -121,7 +122,7 @@ def create_shapefile(jsondir, tilepositions, shp_outdir="shapefile"):
             pv_shapely_ext = shapely.geometry.Polygon(pvjson["points"])  # shapely copy for keying the dict
             holes = [notpv_i['points'] for notpv_i in pv_with_inner[pv_shapely_ext]]
 
-            # Create the polygon with hols, and transform it
+            # Create the polygon with holes, and transform it
             poly = shapely.geometry.Polygon(pvjson['points'], holes=holes)
             poly = shapely.affinity.affine_transform(poly, affmat)
 
@@ -142,6 +143,8 @@ def create_shapefile(jsondir, tilepositions, shp_outdir="shapefile"):
 
         # Add to the global list of polygons
         [all_polygons.append(polygon) for polygon in this_polygons]
+        # Add the tile name
+        [all_names.append(os.path.basename(fn).split(".")[0]) for _ in this_polygons]
 
         # If desired, plot it to make sure we did everything right
         if plot:
@@ -163,7 +166,7 @@ def create_shapefile(jsondir, tilepositions, shp_outdir="shapefile"):
             plt.show()
 
     # Create and save a geopandas dataframe
-    gdf = geopandas.GeoDataFrame(geometry=all_polygons, crs=get_wkt())
+    gdf = geopandas.GeoDataFrame(pd.DataFrame({'tile': all_names}), geometry=all_polygons, crs=get_wkt())
     gdf.to_file(shp_outdir)
 
         
