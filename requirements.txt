@@ -1,6 +1,6 @@
 numpy
+openjpeg<=2.4.0
 pillow
 pandas
 geopandas
 shapely
-tqdm

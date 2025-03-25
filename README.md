@@ -8,9 +8,9 @@ Code for working with the PV segmentation label dataset for Queens, NY
   - Convert the json label files into a shapefile for use in GIS software.
 
 # Setup Instructions
-Open a terminal and run the following command to install dependencies.
+Note that conda is preferred for installation due to `openjpeg` availability. Open a terminal and run the following command to install dependencies.
 ```
-pip install -r requirements.txt
+conda install --yes --file requirements.txt
 ```
 
 # Usage
