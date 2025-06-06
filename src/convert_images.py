@@ -50,8 +50,5 @@ def zip_to_png(source_dir, out_dir, include_ir=True):
 if __name__ == '__main__':
     indir = r"/path/to/unzipped"
     outdir = r"/path/to/output"
-    indir = r"D:\datasets\PV Aerial\NY-labels\boro_queens_sp18"
-    outdir = r"D:\datasets\PV Aerial\NY-labels\boro_queens_sp18_test"
-
 
     zip_to_png(indir, outdir, include_ir=True)
